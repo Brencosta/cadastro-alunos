@@ -12,13 +12,35 @@ with app.app_context():  # ta criando a tabela no banco de dados, tem que ser de
 
 @app.route("/cadastrar", methods =["POST"])
 def cadastrar():
-    nome = request.form.get("nome")
-    idade = request.form.get("idade")
-    aluno_novo = aluno(nome=nome, idade=idade)
-    db.session.add(aluno_novo)
-    db.session.commit()
-    return "Aluno cadastrado com sucesso!"
+    dados = request.get_json()
 
+    aluno = Aluno(  # criando objetoi do tipo aluno 
+        nome=dados["nome"],
+        email=dados["email"],
+        matricula=dados["matricula"]
+    )
+
+    db.session.add(aluno)
+    db.session.commit()
+
+    return {
+        "mensagem": "Aluno cadastrado com sucesso!"
+    }, 201
+    
+@app.route("/alunoos", methods =["GET"])
+def listar_alunos():
+    alunos = Aluno.query.all() # consulta todos os alunos do banco de dados
+    resultado = []
+    for aluno in alunos:
+        resultado.append({
+            "id": aluno.id,
+            "nome": aluno.nome,
+            "email": aluno.email,
+            "matricula": aluno.matricula
+        })
+    return {
+        "alunos": resultado
+    }, 200
 
 
 
