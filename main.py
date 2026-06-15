@@ -32,7 +32,7 @@ def listar_alunos():
     alunos = Aluno.query.all() # consulta todos os alunos do banco de dados
     resultado = []
     for aluno in alunos:
-        resultado.append({
+        resultado.append({ # addciono mna lista vazia formando um dicionartio
             "id": aluno.id,
             "nome": aluno.nome,
             "email": aluno.email,
@@ -42,9 +42,19 @@ def listar_alunos():
         "alunos": resultado
     }, 200
 
+@app.route("/deletar/<int:id>", methods =["DELETE"])
+def deletar_aluno(id):
+    aluno = Aluno.query.get(id)
+    if not aluno:
+        return {
+            "mensagem": "Aluno não encontrado!"
+        }, 404
 
+    db.session.delete(aluno)
+    db.session.commit()
 
-
-
+    return {
+        "mensagem": "Aluno deletado com sucesso!"
+    }, 200
 
 app.run()
