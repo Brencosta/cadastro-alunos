@@ -1,6 +1,6 @@
 from models.aluno import Aluno
 
-class AlunoRepository:
+class AlunoService:
 
     def __init__(self, repository): # incializa o repositório de alunos
         self.repository = repository
