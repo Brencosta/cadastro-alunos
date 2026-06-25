@@ -4,3 +4,5 @@ class Professor(db.Model):
     nome = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False) 
     disciplina = db.Column(db.String(50), nullable=False)
+  # craiando relacionamento entre professor e curso
+    cursos = db.relationship("Curso", backref="professor")
