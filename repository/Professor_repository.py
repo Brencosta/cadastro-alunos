@@ -1,3 +1,4 @@
+# local onde fica os metodos do professor
 from database import db
 from models.professor import Professor 
 class ProfessorRepository:
