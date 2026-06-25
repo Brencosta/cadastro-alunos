@@ -19,6 +19,21 @@ class AlunoRepository:
            email = email
       )
       return self.repository.cadastrar(aluno)
+    
+    def buscar_por_id(self, aluno_id):
+        if aluno_id <= 0:
+            raise Exception("ID inválido")
+        return self.repository.buscar_por_id(aluno_id)
+    
+    def buscar(self):
+        if not self.repository.buscar():
+            raise Exception("Nenhum aluno encontrado")
+        return self.repository.buscar()
+    
+    def deletar(self, aluno): 
+        if aluno is None:
+            raise Exception("Aluno não encontrado")  
+        return self.repository.deletar(aluno)   
    
 
 

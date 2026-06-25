@@ -12,7 +12,7 @@ class AlunoRepository:
     def buscar_por_id(self, aluno_id):
         return Aluno.query.get(aluno_id)
 
-    def buscar_todos(self):
+    def buscar(self):
         return Aluno.query.all()
 
     def deletar(self, aluno):
