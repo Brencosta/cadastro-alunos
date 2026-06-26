@@ -4,19 +4,19 @@ class AlunoService:
 
     def __init__(self, repository): # incializa o repositório de alunos
         self.repository = repository
-    def cadastrar(self, aluno):
+    def cadastrar(self, id, email, nome, matricula):
       if nome == "":
             raise Exception("nome obrigatoiiro")
 
-      if idade < 0:
-            raise Exception("idade inavlida")
+      if id < 0:
+            raise Exception("id invalido")
 
       if "@" not in email:
             raise Exception("email invalido")
       aluno = Aluno(
            nome = nome,
-           idade = idade,
-           email = email
+           email = email,
+           matricula = matricula
       )
       return self.repository.cadastrar(aluno)
     
