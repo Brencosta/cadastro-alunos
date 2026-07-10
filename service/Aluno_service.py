@@ -4,7 +4,7 @@ class AlunoService:
 
     def __init__(self, repository): # incializa o repositório de alunos
         self.repository = repository
-    def cadastrar(self, id, email, nome, matricula):
+    def cadastrar(self, email, nome, matricula):
       if nome == "":
             raise Exception("nome obrigatoiiro")
 
@@ -35,6 +35,7 @@ class AlunoService:
             raise Exception("Aluno não encontrado")  
         return self.repository.deletar(aluno)   
    
-
-
-  
+    def atualizar(self, aluno):
+        if aluno is None:
+            raise Exception("Aluno não encontrado")
+        return self.repository.atualizar(aluno)
