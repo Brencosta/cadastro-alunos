@@ -45,4 +45,4 @@ class ProfessorService:
 
         return self.repository.deletar(professor)
     
-    nome = "sdfghjk"
+   
