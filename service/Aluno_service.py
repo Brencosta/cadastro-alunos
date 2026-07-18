@@ -39,3 +39,5 @@ class AlunoService:
         if aluno is None:
             raise Exception("Aluno não encontrado")
         return self.repository.atualizar(aluno)
+    def soma(a, b):
+        return a + b

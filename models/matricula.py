@@ -1,6 +1,7 @@
 from database import db
 
 class Matricula(db.Model):
+    __tablename__ = "matriculas"
 
     id = db.Column(db.Integer, primary_key=True)
 # criando relacionamento entre aluno e curso
